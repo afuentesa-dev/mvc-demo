@@ -52,12 +52,12 @@ class MvcDemoApplicationUITest {
     }
 
     @Test
-    void testBuscarPorAutorCuandoNoExiste() {
+    void testBuscarPorTituloCuandoTituloExiste() {
         final WebElement input = driver.findElement(By.id("buscar"));
         input.clear();
         input.sendKeys("Paulo");
 
-        final WebElement button = driver.findElement(By.id("btnBuscarAutor"));
+        final WebElement button = driver.findElement(By.id("btnBuscarTitulo"));
         button.click();
 
         final WebElement tabla = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tblLibros")));
