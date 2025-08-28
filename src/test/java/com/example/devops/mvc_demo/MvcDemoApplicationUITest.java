@@ -65,4 +65,20 @@ class MvcDemoApplicationUITest {
 
         Assertions.assertEquals(1, filas.size());
     }
+
+    
+    @Test
+    void testBuscarPorTituloCuandoTituloNoExiste() {
+        final WebElement input = driver.findElement(By.id("buscar"));
+        input.clear();
+        input.sendKeys("Titulo no existe");
+
+        final WebElement button = driver.findElement(By.id("btnBuscarTitulo"));
+        button.click();
+
+        final WebElement tabla = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tblLibros")));
+        final List<WebElement> filas =  tabla.findElements(By.tagName("tr"));
+
+        Assertions.assertEquals(0, filas.size());
+    }
 }
